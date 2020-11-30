@@ -15,23 +15,48 @@ if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss(require(
 
 module.exports = {
     siteName: 'Themagiche',
+    siteDescription: 'A simple, hackable & minimalistic starter for Gridsome that uses Markdown for content.',
     transformers: {
-        remark: {
-          externalLinksTarget: '_blank',
-          externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
-          anchorClassName: 'icon icon-link',
-        }
-      },
-    
+      //Add markdown support to all file-system sources
+      remark: {
+        externalLinksTarget: '_blank',
+        externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
+        anchorClassName: 'icon icon-link',
+        plugins: [
+          '@gridsome/remark-prismjs'
+        ]
+      }
+    },
+    templates: {
+      Post: '/:title',
+      Tag: '/tag/:id'
+    },
+    // plugins: [
+    //     {
+    //       use: '@gridsome/source-filesystem',
+    //       options: {
+    //         path: 'blog/**/*.md',
+    //         typeName: 'Post',
+    //         remark: {}
+    //       }
+    //     }
+    // ],
     plugins: [
-        {
-          use: '@gridsome/source-filesystem',
-          options: {
-            path: 'blog/**/*.md',
-            typeName: 'Post',
-            remark: {}
+      {
+        // Create posts from markdown files
+        use: '@gridsome/source-filesystem',
+        options: {
+          typeName: 'Post',
+          path: 'content/posts/*.md',
+          refs: {
+            // Creates a GraphQL collection from 'tags' in front-matter and adds a reference.
+            tags: {
+              typeName: 'Tag',
+              create: true
+            }
           }
         }
+      }
     ],
     css: {
         loaderOptions: {
