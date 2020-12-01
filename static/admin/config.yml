@@ -17,13 +17,12 @@ public_folder: "/uploads"
 #     - {label: "Body", name: "body", widget: "markdown"}
 
 collections:
-- name: "tag",
-  label: "Tag",
-  create: true
-  slug: "{{slug}}",
-  fields: 
-    - {label: "Tag", name: "tag", widget: "string"}
-
+# - name: "tag",
+#   label: "Tag",
+#   create: true
+#   slug: "{{slug}}",
+#   fields: 
+#     - {label: "Tag", name: "tag", widget: "string"}
 - name: "post" # Used in routes, e.g., /admin/collections/blog
   label: "Post" # Used in the UI
   folder: "posts" # The path to the folder where the documents are stored
@@ -32,7 +31,8 @@ collections:
   fields: # The fields for each document, usually in front matter
     - {label: "Title", name: "title", widget: "string"}
     - {label: "Cover image", name: "cover_image", widget: "image"}
-    - {label: "Description", name: "description", widget: "string"}
+    - {label: "Description", name: "description", widget: "text"}
     - {label: "Content", name: "description", widget: "string"}
     - {label: "Date", name: "date", widget: "dateTime",date_format: "DD.MM.YYYY",time_format: "HH:mm"}
     - {label: "Canonical Url?", name: "canonical_url", widget: "boolean"}
+    - {label: "Tags", name: "tags", widget: "select" multiple: true, options: ["Design", "UX", "Dev"], default: ["Design"] }
