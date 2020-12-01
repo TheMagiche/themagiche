@@ -18,6 +18,8 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^3.0.0",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0",
     "stylelint-config-recommended": "^3.0.0"
   }
 }
