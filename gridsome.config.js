@@ -52,6 +52,7 @@ module.exports = {
             // Creates a GraphQL collection from 'tags' in front-matter and adds a reference.
             tags: {
               typeName: 'Tag',
+              route: "/tag/:id",
               create: true
             }
           }

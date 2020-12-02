@@ -31,9 +31,12 @@ collections:
   slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
   fields: # The fields for each document, usually in front matter
     - {label: "Title", name: "title", widget: "string"}
+    - {label: "Date", name: "date", widget: "dateTime"}
+    - {label: "Published", name: "published", widget: "boolean"}
+    - {label: "Tags", name: "tags", widget: "list"}
     - {label: "Cover image", name: "cover_image", widget: "image"}
+    - {label: "Series", name: "series", widget: "boolean"}
+    - {label: "Time to read", name: "timeToRead", widget: "string"}
+    - {label: "Canonical Url?", name: "canonical_url", widget: "boolean"}
     - {label: "Description", name: "description", widget: "text"}
     - {label: "Content", name: "content", widget: "markdown"}
-    - {label: "Date", name: "date", widget: "dateTime",date_format: "DD.MM.YYYY",time_format: "HH:mm"}
-    - {label: "Canonical Url?", name: "canonical_url", widget: "boolean"}
-    - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["Design", "UX", "Dev"], default: ["Design"] }
